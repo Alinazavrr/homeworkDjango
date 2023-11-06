@@ -1,0 +1,22 @@
+{% extends 'layouts/navbar.html' %}
+{% load bootstrap4 %}
+
+{% block title %}List of Tasks{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% for task in tasks %}
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4 class="card-title"><a href="{% url 'task_detail' pk=task.pk %}">{{ task.name }}</a></h4>
+                    <p class="card-subtitle mb-2 text-body-secondary">DeadLine: {{ task.deadline }}</p>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Description: {{ task.description }}</p>
+                    <a href="{% url 'task_update' pk=task.pk %}" class="btn btn-warning">Update Task</a>
+                    <a href="{% url 'task_delete' pk=task.pk %}" class="btn btn-danger">Delete Task</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

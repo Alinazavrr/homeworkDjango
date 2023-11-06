@@ -1,0 +1,20 @@
+{% extends 'layouts/navbar.html' %}
+{% load bootstrap4 %}
+
+{% block title %}Task Detail{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="card-title">{{ task.name }}</h1>
+                {% if overdue %}
+                    <h5 class="card-text" style="color:Green">Deadline: {{ task.deadline }}</h5>
+                {% else %}
+                    <h5 class="card-text" style="color:Red">Deadline: {{ task.deadline }}</h5>
+                {% endif %}
+                <p class="card-text">Bio: {{ task.description }}</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
